@@ -1,0 +1,24 @@
+﻿
+@model IDictionary<int, PhoneCaller>
+@{Layout = "_AdminLayout"; }
+
+<table class="table table-bordered table-sm">
+    <thead class="table-dark">
+        <tr><th>Номер</th><th>Имя</th><th>Телефон</th><th>Информация</th><th>Действия</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+        <tr>
+            <td>@p.Key</td>
+            <td>@p.Value.Name</td>
+            <td>@p.Value.Phone</td>
+            <td style="max-width:200px">@p.Value.Information</td>
+            <td class="text-center">
+                <a class="btn btn-danger" asp-route-Id=@p.Value.Id asp-action="Delete">Удалить</a>
+                <a class="btn btn-primary" asp-route-Id=@p.Value.Id asp-action="Edit">Редактировать</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
